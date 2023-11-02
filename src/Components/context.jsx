@@ -26,7 +26,6 @@ export const Approvider = ({ children }) => {
 
   const removeItem = (id) => {
     dispatch({ type: REMOVE_ITEM, payload: { id } });
-    console.log("remove: ", id);
   };
   const increase = (id) => {
     dispatch({ type: INCREASE_AMOUNT, payload: { id } });
@@ -51,7 +50,7 @@ export const Approvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        state,
+        ...state,
         removeItem,
         increase,
         decrease,

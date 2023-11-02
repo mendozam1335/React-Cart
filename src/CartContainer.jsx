@@ -2,8 +2,8 @@ import CartItem from "./CartItem";
 import { useGlobalContext } from "./Components/context";
 
 const CartContainer = () => {
-  const { state, totalCost, clear, totalAmount } = useGlobalContext();
-  const cartArray = Array.from(state.cart.entries());
+  const { cart, totalCost, clear, totalAmount } = useGlobalContext();
+  const cartArray = Array.from(cart.entries());
 
   if (totalAmount === 0) {
     return (
@@ -35,7 +35,7 @@ const CartContainer = () => {
         <hr />
         <div>
           <h5 className="cart-total">
-            total <span>{totalCost.toFixed(2)}</span>
+            total <span>${totalCost.toFixed(2)}</span>
           </h5>
         </div>
         <button className="btn btn-hipster" onClick={() => clear()}>

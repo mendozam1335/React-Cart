@@ -4,8 +4,8 @@ import CartContainer from "./CartContainer";
 import { useGlobalContext } from "./Components/context";
 
 function App() {
-  const { state } = useGlobalContext();
-  if (state.loading) {
+  const { loading } = useGlobalContext();
+  if (loading) {
     return <div className="loading"></div>;
   }
   return (
