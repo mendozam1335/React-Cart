@@ -3,6 +3,8 @@ import {
   REMOVE_ITEM,
   INCREASE_AMOUNT,
   DECREASE_AMOUNT,
+  LOADING,
+  DISPLAY,
 } from "./actions";
 const reducer = (state, action) => {
   if (action.type === CLEAR_CART) {
@@ -37,6 +39,13 @@ const reducer = (state, action) => {
     }
     temp.set(id, { ...item, amount: item.amount - 1 });
     return { ...state, cart: temp };
+  }
+  if (action.type === LOADING) {
+    return { ...state, loading: true };
+  }
+  if (action.type === DISPLAY) {
+    const newCart = new Map(action.payload.cart.map((item) => [item.id, item]));
+    return { ...state, loading: false, cart: newCart };
   }
 };
 
